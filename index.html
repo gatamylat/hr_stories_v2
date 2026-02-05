@@ -4,33 +4,35 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>N-Systems · HR KPI 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --green:#2E7D32;
-      --green-l:#43A047;
-      --green-xl:#66BB6A;
-      --green-glow:rgba(46,125,50,.35);
-      --emerald:#1B5E20;
-      --mint:#A5D6A7;
-      --bg:#0C1A0E;
-      --bg2:#0F1F12;
-      --card:rgba(20,45,22,.85);
-      --card-b:rgba(46,125,50,.18);
-      --text:#FFFFFF;
-      --muted:rgba(255,255,255,.55);
-      --soft:rgba(255,255,255,.08);
-      --good:#4CAF50;
-      --warn:#FFC107;
-      --bad:#EF5350;
+      --blue:#0099CC;
+      --blue-d:#007AA3;
+      --blue-l:#33BBDD;
+      --navy:#1A3A5C;
+      --bg:#F5F7FA;
+      --bg-white:#FFFFFF;
+      --card:#FFFFFF;
+      --card-b:rgba(0,153,204,.12);
+      --text:#1A3A5C;
+      --text-l:#5A7A9A;
+      --muted:rgba(26,58,92,.55);
+      --soft:rgba(0,153,204,.06);
+      --good:#2ECC71;
+      --warn:#F39C12;
+      --bad:#E74C3C;
       --r:16px;
     }
 
-    html,body{height:100%;overflow:hidden;background:#000;font-family:'Raleway',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased}
+    html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'Inter',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased}
 
+    .viewport{
+      width:100vw;height:100vh;overflow:hidden;position:relative;
+    }
     .container{
-      width:100vw;height:100vh;display:flex;
+      height:100vh;display:flex;
       transition:transform .4s cubic-bezier(.22,.68,.36,1);
       will-change:transform;
     }
@@ -38,12 +40,9 @@
     .slide{
       min-width:100vw;height:100vh;
       display:flex;flex-direction:column;
-      padding:52px 22px 72px;
+      padding:52px 22px 68px;
       position:relative;overflow:hidden;
-      background:
-        radial-gradient(ellipse 800px 600px at 15% 8%, rgba(46,125,50,.22), transparent 60%),
-        radial-gradient(ellipse 600px 500px at 80% 90%, rgba(27,94,32,.15), transparent 55%),
-        linear-gradient(170deg, var(--bg) 0%, #000 100%);
+      background:var(--bg);
     }
 
     /* ─── Progress bar ─── */
@@ -53,17 +52,17 @@
     }
     .progress-item{
       flex:1;height:3px;border-radius:2px;
-      background:rgba(255,255,255,.15);
+      background:rgba(0,153,204,.20);
       transition:background .3s;
     }
     .progress-item.active,
     .progress-item.viewed{
-      background:linear-gradient(90deg,var(--green-l),var(--mint));
+      background:linear-gradient(90deg,var(--blue),var(--blue-l));
     }
     .counter{
       position:fixed;top:28px;right:16px;z-index:100;
-      font-family:'Playfair Display',serif;font-size:13px;letter-spacing:1px;
-      color:rgba(255,255,255,.30);
+      font-size:12px;font-weight:600;letter-spacing:1px;
+      color:var(--text-l);
     }
 
     /* ─── Navigation ─── */
@@ -73,30 +72,28 @@
     }
     .nav-zone{flex:1;cursor:pointer;-webkit-tap-highlight-color:transparent}
     .nav-hint{
-      position:fixed;bottom:16px;left:50%;transform:translateX(-50%);
-      font-size:9px;letter-spacing:3px;text-transform:uppercase;
-      color:rgba(255,255,255,.18);z-index:100;user-select:none;
+      position:fixed;bottom:14px;left:50%;transform:translateX(-50%);
+      font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+      color:rgba(26,58,92,.30);z-index:100;user-select:none;
     }
 
     /* ─── Typography ─── */
     .slide-tag{
-      font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
-      color:var(--green-xl);text-align:center;margin-bottom:4px;
+      font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+      color:var(--blue);text-align:center;margin-bottom:4px;
     }
     .slide-title{
-      font-family:'Playfair Display',serif;
-      font-size:24px;font-weight:900;letter-spacing:1px;
+      font-size:26px;font-weight:600;letter-spacing:-.3px;
       text-align:center;margin-bottom:6px;
-      background:linear-gradient(135deg,var(--green-xl),var(--mint));
-      -webkit-background-clip:text;background-clip:text;color:transparent;
+      color:var(--navy);
     }
     .slide-sub{
-      font-size:10px;color:rgba(255,255,255,.40);letter-spacing:2px;
-      text-align:center;margin-bottom:18px;text-transform:uppercase;
+      font-size:11px;font-weight:500;color:var(--text-l);letter-spacing:1px;
+      text-align:center;margin-bottom:16px;text-transform:uppercase;
     }
     .brand{
-      font-family:'Playfair Display',serif;font-size:11px;letter-spacing:5px;
-      color:rgba(165,214,167,.45);
+      font-size:11px;font-weight:700;letter-spacing:4px;
+      color:rgba(0,153,204,.45);
       text-align:center;margin-top:auto;padding-top:10px;user-select:none;
     }
 
@@ -106,247 +103,194 @@
       border:1px solid var(--card-b);
       border-radius:var(--r);
       padding:18px;position:relative;
-      box-shadow:0 12px 40px rgba(0,0,0,.3);
-      overflow:hidden;
-    }
-    .card::before{
-      content:'';position:absolute;top:0;left:0;right:0;height:2px;
-      background:linear-gradient(90deg,var(--green-l),var(--mint),transparent);
+      box-shadow:0 4px 20px rgba(26,58,92,.06);
     }
     .card+.card{margin-top:10px}
 
     .kicker{
       font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-      color:var(--green-xl);margin-bottom:8px;
+      color:var(--blue);margin-bottom:8px;
     }
     .h1{
-      font-family:'Playfair Display',serif;
-      font-size:22px;font-weight:900;line-height:1.15;letter-spacing:.5px;
+      font-size:19px;font-weight:600;line-height:1.3;letter-spacing:-.2px;
+      color:var(--navy);
     }
     .lead{
-      font-size:12px;line-height:1.6;color:rgba(255,255,255,.72);margin-top:10px;
+      font-size:13px;line-height:1.6;color:var(--text-l);margin-top:10px;
     }
+    .lead strong{color:var(--navy);font-weight:700}
 
     /* ─── Bullets ─── */
     .bullets{margin-top:12px;display:flex;flex-direction:column;gap:8px}
     .bullet{
       display:flex;gap:12px;align-items:flex-start;
-      padding:12px;border-radius:14px;
-      background:rgba(46,125,50,.08);
-      border:1px solid rgba(46,125,50,.15);
+      padding:12px;border-radius:12px;
+      background:var(--soft);
+      border:1px solid rgba(0,153,204,.08);
     }
     .b-ic{
       width:36px;height:36px;border-radius:10px;
       display:flex;align-items:center;justify-content:center;
-      font-size:16px;flex-shrink:0;
-      background:rgba(46,125,50,.18);
-      border:1px solid rgba(76,175,80,.25);
+      font-size:15px;flex-shrink:0;
+      background:var(--blue);color:#fff;font-weight:700;
     }
     .b-txt{flex:1;min-width:0}
-    .b-title{font-size:12px;font-weight:700;color:#fff}
-    .b-desc{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.45}
+    .b-title{font-size:13px;font-weight:700;color:var(--navy)}
+    .b-desc{font-size:11px;color:var(--text-l);margin-top:2px;line-height:1.45}
 
     /* ─── Insight block ─── */
     .insight{
       margin-top:auto;
-      background:rgba(15,31,18,.9);
-      border:1px solid rgba(46,125,50,.20);
-      border-left:3px solid var(--green-l);
-      border-radius:14px;padding:14px;
+      background:linear-gradient(135deg,rgba(0,153,204,.06),rgba(0,153,204,.02));
+      border:1px solid rgba(0,153,204,.12);
+      border-left:3px solid var(--blue);
+      border-radius:12px;padding:14px;
     }
     .insight .row{display:flex;gap:10px;align-items:flex-start}
     .insight .i-ic{
-      width:34px;height:34px;border-radius:10px;
+      width:32px;height:32px;border-radius:8px;
       display:flex;align-items:center;justify-content:center;
-      font-size:16px;flex-shrink:0;
-      background:rgba(46,125,50,.18);
-      border:1px solid rgba(76,175,80,.25);
+      font-size:14px;flex-shrink:0;
+      background:var(--blue);color:#fff;
     }
-    .insight .i-text{font-size:11px;line-height:1.55;color:rgba(255,255,255,.75)}
+    .insight .i-text{font-size:12px;line-height:1.55;color:var(--text-l)}
+    .insight .i-text strong{color:var(--navy)}
 
     .badge{
       display:inline-flex;align-items:center;gap:4px;
       padding:3px 8px;border-radius:999px;
       font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-      background:rgba(46,125,50,.18);
-      border:1px solid rgba(76,175,80,.25);
-      color:var(--mint);
+      background:var(--blue);color:#fff;
     }
 
     /* ─── Meter ─── */
     .meter{
       margin-top:12px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:14px;padding:14px;
+      background:var(--soft);
+      border:1px solid rgba(0,153,204,.08);
+      border-radius:12px;padding:14px;
     }
     .meter-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-    .meter-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-    .meter-pct{font-family:'Playfair Display',serif;font-size:24px;color:var(--mint)}
-    .bar{height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+    .meter-lbl{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-l)}
+    .meter-pct{font-size:28px;font-weight:600;color:var(--blue)}
+    .bar{height:10px;border-radius:999px;background:rgba(0,153,204,.12);overflow:hidden}
     .bar>div{
       height:100%;width:85%;border-radius:999px;
-      background:linear-gradient(90deg,var(--green),var(--green-l),var(--mint));
+      background:linear-gradient(90deg,var(--blue-d),var(--blue),var(--blue-l));
     }
 
     /* ─── Traffic light ─── */
     .traffic{
-      display:flex;flex-direction:column;align-items:center;gap:8px;
-      padding:16px 12px;
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:16px;
+      display:flex;flex-direction:column;gap:6px;
+      padding:14px;margin-top:12px;
+      background:var(--bg-white);
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:12px;
     }
     .traffic-row{
-      display:flex;align-items:center;gap:12px;width:100%;
+      display:flex;align-items:center;gap:12px;
+      padding:8px 10px;border-radius:8px;
+      background:rgba(0,0,0,.02);
     }
     .traffic-dot{
-      width:28px;height:28px;border-radius:50%;flex-shrink:0;
-      display:flex;align-items:center;justify-content:center;
-      font-size:11px;
+      width:24px;height:24px;border-radius:50%;flex-shrink:0;
     }
-    .traffic-dot.r{background:rgba(239,83,80,.20);border:2px solid rgba(239,83,80,.55);box-shadow:0 0 12px rgba(239,83,80,.15)}
-    .traffic-dot.y{background:rgba(255,193,7,.20);border:2px solid rgba(255,193,7,.55);box-shadow:0 0 12px rgba(255,193,7,.15)}
-    .traffic-dot.g{background:rgba(76,175,80,.20);border:2px solid rgba(76,175,80,.55);box-shadow:0 0 12px rgba(76,175,80,.15)}
-    .traffic-label{font-size:11px;color:rgba(255,255,255,.65);flex:1}
-    .traffic-status{font-size:10px;font-weight:700;letter-spacing:1px}
-    .traffic-status.r{color:var(--bad)}
-    .traffic-status.y{color:var(--warn)}
-    .traffic-status.g{color:var(--good)}
+    .traffic-dot.r{background:var(--bad);box-shadow:0 0 8px rgba(231,76,60,.25)}
+    .traffic-dot.y{background:var(--warn);box-shadow:0 0 8px rgba(243,156,18,.25)}
+    .traffic-dot.g{background:var(--good);box-shadow:0 0 8px rgba(46,204,113,.25)}
+    .traffic-label{font-size:12px;font-weight:500;color:var(--navy);flex:1}
 
     /* ─── Quote ─── */
     .quote{
-      margin-top:12px;
-      padding:16px;border-radius:14px;
-      background:rgba(46,125,50,.06);
-      border:1px solid rgba(46,125,50,.15);
-      position:relative;
-    }
-    .quote::before{
-      content:'«';position:absolute;top:6px;left:12px;
-      font-family:'Playfair Display',serif;font-size:40px;
-      color:rgba(76,175,80,.25);line-height:1;
+      margin-top:10px;
+      padding:14px 14px 14px 18px;border-radius:12px;
+      background:var(--bg-white);
+      border:1px solid rgba(0,0,0,.06);
+      border-left:3px solid var(--blue);
     }
     .quote-text{
-      font-size:12px;line-height:1.6;color:rgba(255,255,255,.80);
-      padding-left:28px;font-style:italic;
-    }
-
-    /* ─── Divider ─── */
-    .divider{
-      display:flex;align-items:center;gap:12px;margin:14px 0;
-    }
-    .divider::before,.divider::after{
-      content:'';flex:1;height:1px;
-      background:linear-gradient(90deg,transparent,rgba(76,175,80,.25),transparent);
-    }
-    .divider span{
-      font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
-      color:rgba(165,214,167,.45);
+      font-size:13px;line-height:1.5;color:var(--text-l);
+      font-style:italic;
     }
 
     /* ─── Hero slide ─── */
     .hero{
       align-items:center;justify-content:center;text-align:center;
       background:
-        radial-gradient(ellipse 700px 600px at 30% 25%, rgba(46,125,50,.28), transparent 55%),
-        radial-gradient(ellipse 500px 400px at 70% 65%, rgba(27,94,32,.22), transparent 55%),
-        linear-gradient(135deg, #060E07 0%, #0C1A0E 50%, #060E07 100%);
+        linear-gradient(180deg, #FFFFFF 0%, var(--bg) 100%);
     }
     .hero .logo{
-      font-family:'Playfair Display',serif;
-      font-size:16px;letter-spacing:8px;
-      color:rgba(165,214,167,.55);margin-bottom:28px;
+      font-size:14px;font-weight:800;letter-spacing:6px;
+      color:var(--blue);margin-bottom:24px;
     }
     .hero .ring{
-      width:140px;height:140px;border-radius:50%;
-      border:2px solid rgba(76,175,80,.50);
+      width:130px;height:130px;border-radius:50%;
+      border:3px solid var(--blue);
       display:flex;flex-direction:column;align-items:center;justify-content:center;
-      position:relative;margin-bottom:28px;
-      box-shadow:0 0 60px rgba(46,125,50,.15),0 0 0 10px rgba(46,125,50,.06);
+      position:relative;margin-bottom:24px;
+      box-shadow:0 8px 40px rgba(0,153,204,.15);
+      background:#fff;
     }
     .hero .ring::after{
-      content:'';position:absolute;inset:-14px;border-radius:50%;
-      border:1px solid rgba(46,125,50,.18);
+      content:'';position:absolute;inset:-12px;border-radius:50%;
+      border:1px solid rgba(0,153,204,.15);
     }
     .hero .ring .big{
-      font-family:'Playfair Display',serif;
-      font-size:50px;font-weight:900;line-height:1;color:#fff;
-      text-shadow:0 4px 20px rgba(0,0,0,.3);
+      font-size:44px;font-weight:600;line-height:1;color:var(--blue);
     }
     .hero .ring .small{
-      font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;
-      color:rgba(165,214,167,.65);margin-top:6px;
+      font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+      color:var(--text-l);margin-top:4px;
     }
     .hero .t1{
-      font-family:'Playfair Display',serif;
-      font-size:28px;font-weight:900;letter-spacing:1px;color:#fff;
-      line-height:1.15;
+      font-size:26px;font-weight:600;letter-spacing:-.3px;color:var(--navy);
+      line-height:1.2;
     }
     .hero .t2{
-      margin-top:8px;font-size:11px;color:rgba(255,255,255,.40);
-      letter-spacing:1px;
+      margin-top:8px;font-size:12px;font-weight:500;color:var(--text-l);
+      letter-spacing:.5px;
     }
-
-    /* ─── Number highlight ─── */
-    .num-highlight{
-      display:flex;align-items:center;justify-content:center;gap:6px;
-      margin-top:12px;
-    }
-    .num-big{
-      font-family:'Playfair Display',serif;
-      font-size:48px;font-weight:900;
-      background:linear-gradient(135deg,var(--green-l),var(--mint));
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-    }
-    .num-unit{font-size:14px;color:var(--muted);margin-top:10px}
 
     /* ─── Comparison blocks ─── */
     .vs{
       display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;
     }
     .vs-box{
-      padding:14px;border-radius:14px;text-align:center;
+      padding:14px;border-radius:12px;text-align:center;
+      background:var(--bg-white);
     }
-    .vs-box.bad{
-      background:rgba(239,83,80,.08);border:1px solid rgba(239,83,80,.18);
-    }
-    .vs-box.good{
-      background:rgba(76,175,80,.08);border:1px solid rgba(76,175,80,.18);
-    }
-    .vs-icon{font-size:24px;margin-bottom:6px}
-    .vs-title{font-size:11px;font-weight:700;margin-bottom:4px}
+    .vs-box.bad{border:1px solid rgba(231,76,60,.25)}
+    .vs-box.good{border:1px solid rgba(46,204,113,.25)}
+    .vs-icon{font-size:22px;margin-bottom:6px}
+    .vs-title{font-size:12px;font-weight:700;margin-bottom:4px}
     .vs-title.bad{color:var(--bad)}
     .vs-title.good{color:var(--good)}
-    .vs-desc{font-size:9px;color:var(--muted);line-height:1.4}
-
-    /* ─── Decorative elements ─── */
-    .deco-line{
-      position:absolute;pointer-events:none;opacity:.12;
-    }
-    .deco-dots{
-      position:absolute;bottom:80px;right:20px;
-      width:60px;height:60px;
-      background-image:radial-gradient(circle,rgba(76,175,80,.4) 1px,transparent 1px);
-      background-size:8px 8px;
-      pointer-events:none;
-    }
+    .vs-desc{font-size:10px;color:var(--text-l);line-height:1.4}
 
     /* ─── Desktop ─── */
-    @media(min-width:900px){
-      .slide{min-width:min(420px,100vw);width:min(420px,100vw)}
-      .progress,.counter,.nav-hint,.nav-zones{max-width:min(420px,100vw);margin:0 auto;left:0;right:0}
+    @media(min-width:600px){
+      body{background:#E8ECF0}
+      .viewport{
+        width:420px;margin:0 auto;
+        box-shadow:0 0 60px rgba(0,0,0,.1);
+      }
+      .slide{
+        min-width:420px;width:420px;
+      }
+      .progress{max-width:420px;left:50%;transform:translateX(-50%);right:auto}
+      .counter{right:calc(50% - 195px)}
+      .nav-zones{width:420px;left:50%;transform:translateX(-50%);right:auto}
+      .nav-hint{width:420px}
     }
 
     /* ─── Animations ─── */
-    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
     .slide.visible .card,
     .slide.visible .insight,
     .slide.visible .quote,
     .slide.visible .traffic,
-    .slide.visible .vs{animation:fadeUp .5s ease-out both}
-    .slide.visible .card:nth-child(2){animation-delay:.08s}
-    .slide.visible .card:nth-child(3){animation-delay:.16s}
+    .slide.visible .vs{animation:fadeUp .45s ease-out both}
+    .slide.visible .card:nth-child(2){animation-delay:.06s}
   </style>
 </head>
 
@@ -359,6 +303,7 @@
   </div>
   <div class="nav-hint">← назад · вперёд →</div>
 
+  <div class="viewport">
   <div class="container" id="container">
 
     <!-- ═══════════════════════════════════════ -->
@@ -378,7 +323,6 @@
 
     <!-- 2. ФОКУС -->
     <section class="slide">
-      <div class="deco-dots"></div>
       <div class="slide-tag">Блок 1 · Слайд 1</div>
       <div class="slide-title">Фокус</div>
       <div class="slide-sub">почему это важно</div>
@@ -397,7 +341,7 @@
           <div class="i-ic">🎯</div>
           <div class="i-text">
             <span class="badge">рамка</span>&nbsp;
-            Это не «кадры». Это — актив, от которого зависит устойчивость бизнеса в 2026 году.
+            Это не «кадры». Это — <strong>актив</strong>, от которого зависит устойчивость бизнеса в 2026 году.
           </div>
         </div>
       </div>
@@ -413,7 +357,7 @@
 
       <div class="card">
         <div class="kicker">актуальность</div>
-        <div class="h1">Есть понятная картина по управленческой команде</div>
+        <div class="h1">Понятная картина по управленческой команде</div>
 
         <div class="bullets">
           <div class="bullet">
@@ -443,7 +387,7 @@
       <div class="insight">
         <div class="row">
           <div class="i-ic">👁</div>
-          <div class="i-text">HR владеет ситуацией, а не реагирует постфактум. Прозрачность для собственника — в реальном времени.</div>
+          <div class="i-text">HR владеет ситуацией, а не реагирует постфактум. <strong>Прозрачность для собственника</strong> — в реальном времени.</div>
         </div>
       </div>
 
@@ -452,7 +396,6 @@
 
     <!-- 4. СИСТЕМНАЯ РАБОТА -->
     <section class="slide">
-      <div class="deco-dots"></div>
       <div class="slide-tag">Блок 1 · Слайд 3</div>
       <div class="slide-title">Системно</div>
       <div class="slide-sub">как ведётся работа</div>
@@ -491,7 +434,7 @@
           <div class="i-ic">⚡</div>
           <div class="i-text">
             <span class="badge">принцип</span>&nbsp;
-            Решения по рисковым позициям готовятся заранее. Опережение, а не «тушение пожаров».
+            Решения по рисковым позициям готовятся заранее. <strong>Опережение</strong>, а не «тушение пожаров».
           </div>
         </div>
       </div>
@@ -522,15 +465,15 @@
           </div>
         </div>
 
-        <div class="lead" style="text-align:center;margin-top:14px;font-size:11px;">
-          Критерий — не «тишина», а <strong>управляемость</strong> и <strong>своевременная подготовка</strong> решений по рисковым позициям.
+        <div class="lead" style="text-align:center;margin-top:12px;font-size:12px;">
+          Критерий — не «тишина», а <strong>управляемость</strong> и своевременная подготовка решений.
         </div>
       </div>
 
       <div class="insight">
         <div class="row">
           <div class="i-ic">🛡</div>
-          <div class="i-text">Главный страх собственника снимается: наличие изменений — не негативный фактор. Негатив — сюрпризы.</div>
+          <div class="i-text">Главный страх собственника снимается: наличие изменений — не негативный фактор. <strong>Негатив — сюрпризы.</strong></div>
         </div>
       </div>
 
@@ -539,7 +482,6 @@
 
     <!-- 6. СВЕРКА (светофор) -->
     <section class="slide">
-      <div class="deco-dots"></div>
       <div class="slide-tag">Блок 1 · Слайд 5</div>
       <div class="slide-title">Сверка</div>
       <div class="slide-sub">раз в квартал · формат диалога</div>
@@ -548,33 +490,30 @@
         <div class="kicker">контрольный вопрос</div>
         <div class="h1">Регулярная сверка вместо сюрпризов</div>
 
-        <div class="traffic" style="margin-top:12px;">
+        <div class="traffic">
           <div class="traffic-row">
             <div class="traffic-dot r"></div>
             <div class="traffic-label">Красная зона — требует решения</div>
-            <div class="traffic-status r">●</div>
           </div>
           <div class="traffic-row">
             <div class="traffic-dot y"></div>
             <div class="traffic-label">Жёлтая зона — под наблюдением</div>
-            <div class="traffic-status y">●</div>
           </div>
           <div class="traffic-row">
             <div class="traffic-dot g"></div>
             <div class="traffic-label">Зелёная зона — стабильно</div>
-            <div class="traffic-status g">●</div>
           </div>
         </div>
       </div>
 
       <div class="quote">
-        <div class="quote-text">Довольна ли ты тем, как сейчас работают руководители из жёлтой и красной зоны? Есть ли риски, которые тебя беспокоят?»</div>
+        <div class="quote-text">«Довольна ли ты тем, как сейчас работают руководители из жёлтой и красной зоны? Есть ли риски, которые тебя беспокоят?»</div>
       </div>
 
       <div class="insight">
         <div class="row">
           <div class="i-ic">🗣</div>
-          <div class="i-text">Контроль — не в отчётах, а в регулярном диалоге. Собственник всегда в курсе.</div>
+          <div class="i-text">Контроль — не в отчётах, а в <strong>регулярном диалоге</strong>. Собственник всегда в курсе.</div>
         </div>
       </div>
 
@@ -615,7 +554,7 @@
           <div class="i-ic">🎯</div>
           <div class="i-text">
             <span class="badge">смена восприятия</span>&nbsp;
-            Подбор — это не сервис, а управленческий процесс, влияющий на непрерывность бизнеса.
+            Подбор — это не сервис, а <strong>управленческий процесс</strong>, влияющий на непрерывность бизнеса.
           </div>
         </div>
       </div>
@@ -625,7 +564,6 @@
 
     <!-- 9. НОРМА -->
     <section class="slide">
-      <div class="deco-dots"></div>
       <div class="slide-tag">Блок 2 · Слайд 2</div>
       <div class="slide-title">Норма</div>
       <div class="slide-sub">как выглядит порядок</div>
@@ -656,7 +594,7 @@
       <div class="insight">
         <div class="row">
           <div class="i-ic">📋</div>
-          <div class="i-text">Норма — отсутствие «провисаний», а не идеальные проценты. По ключевым ролям — понятная картина.</div>
+          <div class="i-text">Норма — <strong>отсутствие «провисаний»</strong>, а не идеальные проценты. По ключевым ролям — понятная картина.</div>
         </div>
       </div>
 
@@ -696,7 +634,7 @@
           <div class="i-ic">⚡</div>
           <div class="i-text">
             <span class="badge">принцип</span>&nbsp;
-            Зрелость процесса — не скорость закрытия, а отсутствие затягивания по критичным позициям.
+            Зрелость процесса — не скорость закрытия, а <strong>отсутствие затягивания</strong> по критичным позициям.
           </div>
         </div>
       </div>
@@ -706,7 +644,6 @@
 
     <!-- 11. ОЦЕНКА (85%) -->
     <section class="slide">
-      <div class="deco-dots"></div>
       <div class="slide-tag">Блок 2 · Слайд 4</div>
       <div class="slide-title">Оценка</div>
       <div class="slide-sub">как измеряем результат</div>
@@ -732,7 +669,7 @@
       <div class="insight">
         <div class="row">
           <div class="i-ic">📊</div>
-          <div class="i-text">Цифры — инструмент, а не KPI ради KPI. Зрелый подход: результат виден по влиянию на бизнес.</div>
+          <div class="i-text">Цифры — инструмент, а не KPI ради KPI. <strong>Зрелый подход:</strong> результат виден по влиянию на бизнес.</div>
         </div>
       </div>
 
@@ -750,23 +687,24 @@
         <div class="h1">Есть ли критичные вакансии?</div>
 
         <div class="quote" style="margin-top:12px;">
-          <div class="quote-text">Есть ли вакансии, по которым нет понятного статуса?»</div>
+          <div class="quote-text">«Есть ли вакансии, по которым нет понятного статуса?»</div>
         </div>
         <div class="quote" style="margin-top:8px;">
-          <div class="quote-text">Есть ли ощущение, что мы зависли или теряем время?»</div>
+          <div class="quote-text">«Есть ли ощущение, что мы зависли или теряем время?»</div>
         </div>
       </div>
 
       <div class="insight">
         <div class="row">
           <div class="i-ic">🗂</div>
-          <div class="i-text">Регулярная прозрачность по статусу — чтобы решения принимались вовремя. Собственник всегда в курсе.</div>
+          <div class="i-text">Регулярная прозрачность по статусу — чтобы <strong>решения принимались вовремя</strong>. Собственник всегда в курсе.</div>
         </div>
       </div>
 
       <div class="brand">N‑SYSTEMS</div>
     </section>
 
+  </div>
   </div>
 
   <script>
@@ -785,16 +723,15 @@
     }
 
     function update() {
-      container.style.transform = `translateX(-${cur * 100}vw)`;
+      const w = slides[0].offsetWidth;
+      container.style.transform = `translateX(-${cur * w}px)`;
       counter.textContent = `${cur + 1}/${total}`;
       progress.querySelectorAll('.progress-item').forEach((el, i) => {
         el.className = 'progress-item';
         if (i < cur) el.classList.add('viewed');
         if (i === cur) el.classList.add('active');
       });
-      // trigger animation
       slides.forEach((s, i) => s.classList.toggle('visible', i === cur));
-      history.replaceState(null, '', `#${cur + 1}`);
     }
 
     function next() { if (cur < total - 1) { cur++; update(); } }
@@ -814,9 +751,7 @@
       if (Math.abs(d) > 50) { d > 0 ? next() : prev(); }
     }, { passive: true });
 
-    // Start from hash
-    const h = parseInt(location.hash.replace('#',''), 10);
-    if (!isNaN(h) && h >= 1 && h <= total) cur = h - 1;
+    window.addEventListener('resize', () => update());
     update();
   </script>
 </body>
